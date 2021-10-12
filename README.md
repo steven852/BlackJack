@@ -1,2 +1,2 @@
 # BlackJack
-A simple black jack game made in Java.
+A simple black jack game played on a terminal, made with Java.
