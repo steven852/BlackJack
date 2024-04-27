@@ -1,59 +1,67 @@
+import custom.utils.Logger;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player {
   private ArrayList<String> cardsHeld;
-  private Deck deck = Deck.getDeck();
   private int score;
 
-  public Player(){
-    this.score = 0;
-    this.cardsHeld = new ArrayList<String>();
+  public Player() { this.cardsHeld = new ArrayList<String>(); }
+
+  public void drawCard() {
+    Logger.consoleLog();
+    Logger.consoleLog("The " + getClass().getSimpleName() + " Draws...");
+    cardsHeld.add(Deck.getInstance().serveCard());
+    GameSupervisor.getInstance().calculatePlayersScore(this);
   }
 
-  public void hit(){
-    System.out.println();
-    System.out.println("The " + this.getClass().getSimpleName() + " Draws...");
-    this.cardsHeld.add(this.deck.popDeck());
-    calculateScore(this.cardsHeld);
-  }
-
-  public void showHand(){
-    System.out.println();
-    System.out.print("The " + this.getClass().getSimpleName() + " Has: ");
-    for (int i = 0; i < this.cardsHeld.size(); i++){
-      System.out.print(this.cardsHeld.get(i) + ", ");
+  public void showCards() {
+    Logger.consoleLog();
+    Logger.consoleLog("The " + getClass().getSimpleName() + " Has: ");
+    for (int i = 0; i < cardsHeld.size(); i++) {
+      Logger.consoleLog(cardsHeld.get(i) + ", ");
     }
-    System.out.println("and Score = " + this.score);
+
+    Logger.consoleLog("and Score = " +
+                      GameSupervisor.getInstance().calculatePlayersScore(this));
   }
 
-  public ArrayList<String> getCardsHeld(){
-    return this.cardsHeld;
-  }
+  public ArrayList<String> getCardsHeld() { return this.cardsHeld; }
 
-  public void calculateScore(ArrayList<String> cardsHeld){
-    String card = "";
-    this.score = 0; // Sneaky bug if not cleaed the score will append
+  public void playTurn() {
+    printPlayersOptions();
 
-    for(int i = 0; i < this.cardsHeld.size(); i++){
-      card = this.cardsHeld.get(i).split("-")[0];
-      if(NewGame.isNumeric(card)){
-        this.score += Integer.parseInt(card);
-      }
-      else {
-        switch (card) {
-          case "A":
-            this.score += 11; // TO-DO fix this
-            break;
+    Scanner sc = new Scanner(System.in);
+    String option = sc.next();
 
-          default:
-            this.score += 10;
-            break;
-        }
-      }
+    switch (option) {
+    case "1":
+      drawCard();
+      break;
+
+    case "2":
+      return;
+
+    default:
+      return;
+    }
+
+    showCards();
+
+    if (GameSupervisor.getInstance().isPlayerBusted(this) == true) {
+      Logger.consoleLog("Player is busted!");
+      return;
+    }
+
+    else {
+      playTurn();
     }
   }
 
-  public int getScore() {
-    return this.score;
+  private void printPlayersOptions() {
+    Logger.consoleLog();
+    Logger.consoleLog("Choose An Option: ");
+    Logger.consoleLog("1 - Draw");
+    Logger.consoleLog("2 - Stay");
   }
 }
