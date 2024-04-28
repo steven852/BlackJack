@@ -1,7 +1,7 @@
-public class GameSupervisor {
-  public static GameSupervisor getInstance() {
+public class ScoreMgr {
+  public static ScoreMgr getInstance() {
     if (INSTANCE == null) {
-      INSTANCE = new GameSupervisor();
+      INSTANCE = new ScoreMgr();
     }
     return INSTANCE;
   }
@@ -40,6 +40,6 @@ public class GameSupervisor {
     return score;
   }
 
-  private static GameSupervisor INSTANCE;
-  private GameSupervisor() {}
+  private static ScoreMgr INSTANCE;
+  private ScoreMgr() {}
 }

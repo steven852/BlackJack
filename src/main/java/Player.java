@@ -12,7 +12,7 @@ public class Player {
     Logger.consoleLog();
     Logger.consoleLog("The " + getClass().getSimpleName() + " Draws...");
     cardsHeld.add(Deck.getInstance().serveCard());
-    GameSupervisor.getInstance().calculatePlayersScore(this);
+    ScoreMgr.getInstance().calculatePlayersScore(this);
   }
 
   public void showCards() {
@@ -23,7 +23,7 @@ public class Player {
     }
 
     Logger.consoleLog("and Score = " +
-                      GameSupervisor.getInstance().calculatePlayersScore(this));
+                      ScoreMgr.getInstance().calculatePlayersScore(this));
   }
 
   public ArrayList<String> getCardsHeld() { return this.cardsHeld; }
@@ -48,7 +48,7 @@ public class Player {
 
     showCards();
 
-    if (GameSupervisor.getInstance().isPlayerBusted(this) == true) {
+    if (ScoreMgr.getInstance().isPlayerBusted(this) == true) {
       Logger.consoleLog("Player is busted!");
       return;
     }

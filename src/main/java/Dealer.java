@@ -18,19 +18,19 @@ public final class Dealer extends Player {
   public void playTurn() {
     showCards();
 
-    if (GameSupervisor.getInstance().isPlayerBusted(this) == true) {
+    if (ScoreMgr.getInstance().isPlayerBusted(this) == true) {
       Logger.consoleLog(
           "Deler busted with: " +
-          GameSupervisor.getInstance().calculatePlayersScore(this) + " !");
+          ScoreMgr.getInstance().calculatePlayersScore(this) + " !");
 
       return;
     }
 
-    if (GameSupervisor.getInstance().calculatePlayersScore(this) >=
+    if (ScoreMgr.getInstance().calculatePlayersScore(this) >=
         DRAW_UNTIL_SCORE) {
       Logger.consoleLog(
           "Deler stops with final score: " +
-          GameSupervisor.getInstance().calculatePlayersScore(this));
+          ScoreMgr.getInstance().calculatePlayersScore(this));
 
       return;
     }
