@@ -2,16 +2,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player {
-  private ArrayList<String> cardsHeld;
-  private int score;
-
-  public Player() { this.cardsHeld = new ArrayList<String>(); }
+  public Player() {
+    cardsHeld = new ArrayList<String>();
+    currentScore = 0;
+  }
 
   public void drawCard() {
     System.out.println();
     System.out.println("The " + getClass().getSimpleName() + " draws ...");
     cardsHeld.add(Deck.getInstance().serveCard());
-    ScoreMgr.calculatePlayersScore(this);
+    currentScore = ScoreMgr.calculatePlayersScore(this);
   }
 
   public void showCards() {
@@ -21,7 +21,7 @@ public class Player {
       System.out.println(cardsHeld.get(i) + ", ");
     }
 
-    System.out.println("and score = " + ScoreMgr.calculatePlayersScore(this));
+    System.out.println("and score = " + currentScore);
   }
 
   public ArrayList<String> getCardsHeld() { return this.cardsHeld; }
@@ -51,7 +51,7 @@ public class Player {
       return;
     }
 
-    else if (ScoreMgr.calculatePlayersScore(this) == 21) {
+    else if (currentScore == 21) {
       System.out.println("21 reached!");
       return;
     }
@@ -60,6 +60,9 @@ public class Player {
       playTurn();
     }
   }
+
+  private ArrayList<String> cardsHeld;
+  private int currentScore;
 
   private void printPlayersOptions() {
     System.out.println();
