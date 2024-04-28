@@ -9,20 +9,19 @@ public class Player {
 
   public void drawCard() {
     System.out.println();
-    System.out.println("The " + getClass().getSimpleName() + " Draws...");
+    System.out.println("The " + getClass().getSimpleName() + " draws ...");
     cardsHeld.add(Deck.getInstance().serveCard());
     ScoreMgr.calculatePlayersScore(this);
   }
 
   public void showCards() {
     System.out.println();
-    System.out.println("The " + getClass().getSimpleName() + " Has: ");
+    System.out.println("The " + getClass().getSimpleName() + " holds: ");
     for (int i = 0; i < cardsHeld.size(); i++) {
       System.out.println(cardsHeld.get(i) + ", ");
     }
 
-    System.out.println("and Score = " +
-                      ScoreMgr.calculatePlayersScore(this));
+    System.out.println("and score = " + ScoreMgr.calculatePlayersScore(this));
   }
 
   public ArrayList<String> getCardsHeld() { return this.cardsHeld; }
