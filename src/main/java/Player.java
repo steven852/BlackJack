@@ -52,6 +52,11 @@ public class Player {
       return;
     }
 
+    else if (ScoreMgr.calculatePlayersScore(this) == 21) {
+      System.out.println("21 reached!");
+      return;
+    }
+
     else {
       playTurn();
     }
