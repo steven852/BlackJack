@@ -1,4 +1,3 @@
-import custom.utils.Logger;
 import java.util.Scanner;
 
 class NewGame {
@@ -31,7 +30,7 @@ class NewGame {
     //   player1.hit();
     //   dealer.showHand();
 
-    //   Logger.consoleLog();
+    //   System.out.println();
 
     //   Scanner sc1 = new Scanner(System.in);
     //   String option = "";
@@ -77,9 +76,9 @@ class NewGame {
   }
 
   public static void printGameOptions() {
-    Logger.consoleLog("---------------------------");
-    Logger.consoleLog("Choose An Option: ");
-    Logger.consoleLog("1 - New Game");
-    Logger.consoleLog("Any Other - Exit");
+    System.out.println("---------------------------");
+    System.out.println("Choose An Option: ");
+    System.out.println("1 - New Game");
+    System.out.println("Any Other - Exit");
   }
 }

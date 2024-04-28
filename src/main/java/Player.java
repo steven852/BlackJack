@@ -1,4 +1,3 @@
-import custom.utils.Logger;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,20 +8,20 @@ public class Player {
   public Player() { this.cardsHeld = new ArrayList<String>(); }
 
   public void drawCard() {
-    Logger.consoleLog();
-    Logger.consoleLog("The " + getClass().getSimpleName() + " Draws...");
+    System.out.println();
+    System.out.println("The " + getClass().getSimpleName() + " Draws...");
     cardsHeld.add(Deck.getInstance().serveCard());
     ScoreMgr.getInstance().calculatePlayersScore(this);
   }
 
   public void showCards() {
-    Logger.consoleLog();
-    Logger.consoleLog("The " + getClass().getSimpleName() + " Has: ");
+    System.out.println();
+    System.out.println("The " + getClass().getSimpleName() + " Has: ");
     for (int i = 0; i < cardsHeld.size(); i++) {
-      Logger.consoleLog(cardsHeld.get(i) + ", ");
+      System.out.println(cardsHeld.get(i) + ", ");
     }
 
-    Logger.consoleLog("and Score = " +
+    System.out.println("and Score = " +
                       ScoreMgr.getInstance().calculatePlayersScore(this));
   }
 
@@ -49,7 +48,7 @@ public class Player {
     showCards();
 
     if (ScoreMgr.getInstance().isPlayerBusted(this) == true) {
-      Logger.consoleLog("Player is busted!");
+      System.out.println("Player is busted!");
       return;
     }
 
@@ -59,9 +58,9 @@ public class Player {
   }
 
   private void printPlayersOptions() {
-    Logger.consoleLog();
-    Logger.consoleLog("Choose An Option: ");
-    Logger.consoleLog("1 - Draw");
-    Logger.consoleLog("2 - Stay");
+    System.out.println();
+    System.out.println("Choose An Option: ");
+    System.out.println("1 - Draw");
+    System.out.println("2 - Stay");
   }
 }

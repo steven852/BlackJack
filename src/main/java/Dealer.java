@@ -1,5 +1,3 @@
-import custom.utils.Logger;
-
 public final class Dealer extends Player {
   public final static int DRAW_UNTIL_SCORE = 16;
   private static Dealer INSTANCE;
@@ -19,7 +17,7 @@ public final class Dealer extends Player {
     showCards();
 
     if (ScoreMgr.getInstance().isPlayerBusted(this) == true) {
-      Logger.consoleLog(
+      System.out.println(
           "Deler busted with: " +
           ScoreMgr.getInstance().calculatePlayersScore(this) + " !");
 
@@ -28,7 +26,7 @@ public final class Dealer extends Player {
 
     if (ScoreMgr.getInstance().calculatePlayersScore(this) >=
         DRAW_UNTIL_SCORE) {
-      Logger.consoleLog(
+      System.out.println(
           "Deler stops with final score: " +
           ScoreMgr.getInstance().calculatePlayersScore(this));
 

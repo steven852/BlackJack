@@ -1,5 +1,3 @@
-import custom.utils.Logger;
-
 public class Game {
   public static Game getInstance() {
     if (INSTANCE == null) {
@@ -9,7 +7,7 @@ public class Game {
   }
 
   public void startGame() {
-    Logger.consoleLog("Staring new black Jack game ...");
+    System.out.println("Staring new black Jack game ...");
     playNextMove();
   }
 
@@ -79,7 +77,7 @@ public class Game {
   }
 
   private void printWinner() {
-    Logger.consoleLog("The winner is ...");
+    System.out.println("The winner is ...");
   }
 
   private void resetGame() {
