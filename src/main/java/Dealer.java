@@ -16,19 +16,19 @@ public final class Dealer extends Player {
   public void playTurn() {
     showCards();
 
-    if (ScoreMgr.getInstance().isPlayerBusted(this) == true) {
+    if (ScoreMgr.isPlayerBusted(this) == true) {
       System.out.println(
           "Deler busted with: " +
-          ScoreMgr.getInstance().calculatePlayersScore(this) + " !");
+          ScoreMgr.calculatePlayersScore(this) + " !");
 
       return;
     }
 
-    if (ScoreMgr.getInstance().calculatePlayersScore(this) >=
+    if (ScoreMgr.calculatePlayersScore(this) >=
         DRAW_UNTIL_SCORE) {
       System.out.println(
           "Deler stops with final score: " +
-          ScoreMgr.getInstance().calculatePlayersScore(this));
+          ScoreMgr.calculatePlayersScore(this));
 
       return;
     }

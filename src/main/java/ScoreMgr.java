@@ -1,11 +1,4 @@
-public class ScoreMgr {
-  public static ScoreMgr getInstance() {
-    if (INSTANCE == null) {
-      INSTANCE = new ScoreMgr();
-    }
-    return INSTANCE;
-  }
-
+public final class ScoreMgr {
   public static boolean isPlayerBusted(Player player) {
     if (calculatePlayersScore(player) > 21) {
       return true;
@@ -40,6 +33,5 @@ public class ScoreMgr {
     return score;
   }
 
-  private static ScoreMgr INSTANCE;
   private ScoreMgr() {}
 }

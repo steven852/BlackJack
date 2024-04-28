@@ -11,7 +11,7 @@ public class Player {
     System.out.println();
     System.out.println("The " + getClass().getSimpleName() + " Draws...");
     cardsHeld.add(Deck.getInstance().serveCard());
-    ScoreMgr.getInstance().calculatePlayersScore(this);
+    ScoreMgr.calculatePlayersScore(this);
   }
 
   public void showCards() {
@@ -22,7 +22,7 @@ public class Player {
     }
 
     System.out.println("and Score = " +
-                      ScoreMgr.getInstance().calculatePlayersScore(this));
+                      ScoreMgr.calculatePlayersScore(this));
   }
 
   public ArrayList<String> getCardsHeld() { return this.cardsHeld; }
@@ -47,7 +47,7 @@ public class Player {
 
     showCards();
 
-    if (ScoreMgr.getInstance().isPlayerBusted(this) == true) {
+    if (ScoreMgr.isPlayerBusted(this) == true) {
       System.out.println("Player is busted!");
       return;
     }
