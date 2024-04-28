@@ -33,5 +33,24 @@ public final class ScoreMgr {
     return score;
   }
 
+  public static void printWinners(Player player) {
+    if (isPlayerBusted(player) == true) {
+      System.out.println("Dealer Won Better Luck Next Time");
+      return;
+    }
+
+    else if (isPlayerBusted(Dealer.getInstance()) == true) {
+      System.out.println("Congratulations you Won the Round!");
+    }
+
+    else if (player.getCurrentScore() > Dealer.getInstance().getCurrentScore()) {
+      System.out.println("Congratulations you Won the Round!");
+    }
+
+    else {
+      System.out.println("Dealer Won Better Luck Next Time");
+    }
+  }
+
   private ScoreMgr() {}
 }

@@ -48,12 +48,18 @@ public class Game {
       break;
 
     case DEALER_TURN:
-      Dealer.getInstance().playTurn();
-      gameState = GameState.GAME_OVER;
+      if (ScoreMgr.isPlayerBusted(player) == true) {
+        gameState = GameState.GAME_OVER;
+      }
+
+      else {
+        Dealer.getInstance().playTurn();
+        gameState = GameState.GAME_OVER;
+      }
       break;
 
     case GAME_OVER:
-      printWinner();
+      ScoreMgr.printWinners(player);
       resetGame();
       return;
 
@@ -76,9 +82,7 @@ public class Game {
     player.showCards();
   }
 
-  private void printWinner() {
-    System.out.println("The winner is ...");
-  }
+  private void printWinner() { System.out.println("The winner is ..."); }
 
   private void resetGame() {
     player = new Player();

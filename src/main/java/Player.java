@@ -26,6 +26,8 @@ public class Player {
 
   public ArrayList<String> getCardsHeld() { return this.cardsHeld; }
 
+  public int getCurrentScore() { return currentScore; }
+
   public void playTurn() {
     printPlayersOptions();
 
